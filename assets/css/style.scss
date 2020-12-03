@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
+
+/* ==== Variables ==== */
+$--header-height: 3rem;
+$--nav-width-s: 68px;
+$--nav-width-l: 220px;
+
+/* ==== Colors ==== */
+$--primary-clr: #212121;
+$--secondary-clr: #d5d5d5;
+$--white-clr: #F7F6FB;
+$--black-clr: #2e2e2e;
+
+/* ==== Fonts ==== */
+$--primary-font: 'Nunito', sans-serif;
+$--primary-font-size: 1rem;
+
+/* ==== Z Index ==== */
+$--z-fixed: 100;
+
+/* ==== Base ==== */
+*, ::before, ::after {
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    margin: $--header-height 0 0 0;
+    padding: 0 1rem;
+    font-family: $--primary-font;
+    font-size: $--primary-font-size;
+    transition: 0.5s;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* ==== Header ==== */
+header {
+    width: 100%;
+    height: $--header-height;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: $--white-clr;
+    z-index: 1;
+    transition: 0.5s;
+    padding-left: $--nav-width-s + 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    #toggle {
+        color: $--black-clr;
+        font-size: 1.5rem;
+        cursor: pointer;
+        left: 10px;
+    }
+}
+
+.wide-nav {
+    header {
+        padding-left: $--nav-width-l + 20px;
+        left: 0;
+    }
+    .l-navbar {
+        width: $--nav-width-l;
+        padding: .5rem 1rem 0 0;
+    }
+}
+
+/* ==== Nav ==== */
+.l-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: $--nav-width-s;
+    height: 100vh;
+    background-color: $--primary-clr;
+    padding: .5rem .5rem 0 0;
+    transition: 0.5s;
+    z-index: 1;
+}
+
+.nav {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.nav__link, .nav__logo {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    align-items: center;
+    column-gap: 1rem;
+    padding: .5rem 0 .5rem 1.5rem;
+    position: relative;
+    color: $--secondary-clr;
+    margin-bottom: 1.5rem;
+    transition: 0.5s;
+    font-size: 1rem;
+}
+
+.nav__link {
+    &:hover, &:active {
+        background: $--black-clr;
+        border-radius: 0 10px 10px 0;
+        border-left: 3px solid $--white-clr;
+    }
+
+    .nav__icon {
+        font-size: 1.25rem;
+    }
+}
+
+
+.nav__logo-icon {
+    color: $--secondary-clr;
+    font-weight: 700;
+}
+
+@media screen and (max-width: 768px) {
+    .wide-nav {
+        header {
+            padding-left: $--nav-width-s;
+        }
+
+        .l-navbar {
+            width: $--nav-width-s;
+            left: 0;
+        }
+    }
+
+    .l-navbar {
+        left: -30%;
+    }
+    header {
+        padding-left: 0;
+    }
+}
